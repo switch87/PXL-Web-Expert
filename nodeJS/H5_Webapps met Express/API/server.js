@@ -18,8 +18,20 @@ app.get('/', function (req, res) {
 app.get('/api/auteurs', function (req, res) {
     res.json(auteurs);
 });
+
 app.get('/api/boeken', function (req, res) {
     res.json(boeken);
+});
+
+app.get('/api/boeken/:id', function (req, res) {
+    var id = req.params.id;
+    var gezochtBoek;
+    boeken.forEach(function (boek) {
+        if(boek.id === parseInt(id)){
+            gezochtBoek = boek;
+        }
+    });
+    res.json(gezochtBoek);
 });
 
 app.listen(3000);
