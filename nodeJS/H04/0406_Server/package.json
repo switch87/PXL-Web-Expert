@@ -1,0 +1,11 @@
+{
+  "name": "0406_Server",
+  "version": "0.0.0",
+  "description": "",
+  "main": "server_01.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gert Pellin",
+  "license": "BSD-2-Clause"
+}
