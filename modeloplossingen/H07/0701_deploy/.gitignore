@@ -1,5 +1,0 @@
-# .gitignore - mappen en bestanden die
-# niet worden meegenomen in de repo:
-node_modules
-.idea
-
