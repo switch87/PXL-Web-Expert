@@ -1,0 +1,26 @@
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Template AngularJS</title>
+    <link href="../css/bootstrap.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container" ng-controller="testController">
+    <h1>Een eenvoudige controller</h1>
+    <h2>{{ name }}</h2>
+    <p>Favoriete stad: {{ city }}</p>
+    <p>Favoriet land: {{ country }}</p>
+</div>
+<script src="../js/vendor/angular/angular.min.js"></script>
+<script>
+    // er wordt een globale variabele app gemaakt
+    var app = angular.module('myApp', []);
+    app.controller('testController',
+            function ($scope) {
+                $scope.name = 'Peter Kassenaar';
+                $scope.city = 'Groningen';
+                $scope.country = 'Verenigde Staten';
+            })
+</script>
+</body>
+</html>
