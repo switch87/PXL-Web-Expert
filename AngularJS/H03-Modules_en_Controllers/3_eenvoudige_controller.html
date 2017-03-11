@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Template AngularJS</title>
+    <link href="../css/bootstrap.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container" ng-controller="testController">
+    <h1>ng-repeat met filter</h1>
+    <p>
+        <input type="checkbox" ng-model="reversed"/>Omgekeerd sorteren <br>
+        <input type="text" ng-model="naam" class="input-lg" placeholder="filter op naam..."/>
+    </p>
+    <ul>
+        <li ng-repeat="person in persons | orderBy : 'name' : reversed | filter : {lastname : naam}">
+            {{ person.name | uppercase }} - {{ person.lastname | lowercase }}
+        </li>
+        <li ng-if="numResults.length === 0">
+            <strong>Geen resultaten gevonden...</strong>
+        </li>
+    </ul>
+</div>
+<script src="../js/vendor/angular/angular.min.js"></script>
+<script>
+    // er wordt een globale variabele app gemaakt
+    var app = angular.module('myApp', []);
+    app.controller('testController',
+            function ($scope) {
+                $scope.persons = [
+                    {name: 'John', lastname: 'Visser'},
+                    {name: 'Bob', lastname: 'De Bouwer'},
+                    {name: 'Nick', lastname: 'Sint Klaas'}];
+                $scope.reversed = true;
+            });
+</script>
+</body>
+</html>
+
