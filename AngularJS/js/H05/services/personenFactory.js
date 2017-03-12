@@ -32,6 +32,17 @@
             return persons[id - 1];
         };
 
+        factory.addPerson = function (newPerson) {
+            var id = 0;
+            for (var i = 0; i < persons.length; i++){
+                if (persons[i].id >= id) {
+                    id = persons[i].id + 1;
+                }
+            }
+            newPerson.id = id;
+            persons.push(newPerson);
+        };
+
         return factory;
     }
 })();

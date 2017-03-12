@@ -11,7 +11,7 @@
     function detailController($routeParams, personFactory) {
         var vm = this,
             id = $routeParams.id;
-        vm.person = personFactory.getPersons(id); // -1 omdat array zero-based is (en de id's niet)
+        vm.person = personFactory.getPerson(id); // -1 omdat array zero-based is (en de id's niet)
 
     }
 })();
