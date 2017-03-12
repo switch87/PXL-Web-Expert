@@ -2,24 +2,27 @@
  * Created by switch87 on 12/03/17.
  */
 
-(function () {
-    angular.module('myApp') // angular.module() fungeert als getter
-        .controller('myController', function ($scope) {
+(function (app) {
+    app.controller('myController', myControllerFn);
 
-            $scope.persons = [
-                {name: 'John', lastname: 'Visser', age: '55', email: 'John@pxl.be'},
-                {name: 'Bob', lastname: 'De Bouwer', age: '18', email: 'Bob@pxl.be'},
-                {name: 'Nick', lastname: 'Sint Klaas', age: '33', email: 'Nick@pxl.be'}];
+    myControllerFn.$inject = ['$scope', '$location'];
 
-            $scope.showDetail = function (person) {
-                $scope.mame = person.name;
-                $scope.lastname = person.lastname;
-                $scope.age = person.age;
-                $scope.email = person.email;
-            };
+    function myControllerFn($scope, $location) {
 
-            $scope.showDetail($scope.persons[0]);
+        $scope.persons = [
+            {name: 'John', lastname: 'Visser', age: '55', email: 'John@pxl.be'},
+            {name: 'Bob', lastname: 'De Bouwer', age: '18', email: 'Bob@pxl.be'},
+            {name: 'Nick', lastname: 'Sint Klaas', age: '33', email: 'Nick@pxl.be'}];
 
-            $scope.reversed = true;
-        })
-});
+        $scope.showDetail = function (person) {
+            $scope.mame = person.name;
+            $scope.lastname = person.lastname;
+            $scope.age = person.age;
+            $scope.email = person.email;
+        };
+
+        $scope.showDetail($scope.persons[0]);
+
+        $scope.reversed = true;
+    }
+})(angular.module('myApp')); // angular.module() fungeert als getter
