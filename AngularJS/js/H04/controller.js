@@ -3,7 +3,11 @@
  */
 
 (function (app) {
-    app.controller('myController', myControllerFn);
+    app.controller('myController', myControllerFn)
+        .controller('homeController', homeControllerFn)
+        .controller('aboutController', aboutControllerFn)
+        .controller('contactController', contactControllerFn)
+    ;
 
     function myControllerFn() {
 
@@ -24,4 +28,17 @@
 
         vm.reversed = true;
     }
+
+    function homeControllerFn() {
+        this.msg = 'Hello vanuit de homeController';
+    }
+
+    function aboutControllerFn() {
+        this.msg = 'Hello vanuit de aboutController';
+    }
+
+    function contactControllerFn() {
+        this.msg = 'Hello vanuit de contactController';
+    }
+
 })(angular.module('myApp')); // angular.module() fungeert als getter
