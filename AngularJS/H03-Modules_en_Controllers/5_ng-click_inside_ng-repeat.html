@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Template AngularJS</title>
+    <link href="../css/bootstrap.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="container" ng-controller="testController">
+    <h1>ng-repeat met filter</h1>
+    <p>
+        <input type="checkbox" ng-model="reversed"/>Omgekeerd sorteren <br>
+        <input type="text" ng-model="naam" class="input-lg" placeholder="filter op naam..."/>
+    </p>
+    <ul>
+        <li ng-repeat="person in persons | orderBy : 'name' : reversed | filter : {lastname : naam}">
+            <a href="#" ng-click="showDetail(person)">
+                {{ person.name | uppercase }} - {{ person.lastname | lowercase }}
+            </a>
+        </li>
+        <li ng-if="numResults.length === 0">
+            <strong>Geen resultaten gevonden...</strong>
+        </li>
+    </ul>
+    <hr>
+    <!-- 2. Details per persoon -->
+    <div>
+        <h3>{{ name }} {{ lastname }}</h3>
+        <strong>{{ age }} jaar </strong>,
+        <a href="mailto:{{email}}">{{ email }}</a>
+    </div>
+</div>
+<script src="../js/vendor/angular/angular.min.js"></script>
+<script>
+    // er wordt een globale variabele app gemaakt
+    var app = angular.module('myApp', []);
+    app.controller('testController',
+        function ($scope) {
+            $scope.persons = [
+                {name: 'John', lastname: 'Visser', age: '55', email: 'John@pxl.be'},
+                {name: 'Bob', lastname: 'De Bouwer', age: '18', email: 'Bob@pxl.be'},
+                {name: 'Nick', lastname: 'Sint Klaas', age: '33', email: 'Nick@pxl.be'}];
+
+            $scope.showDetail = function (person) {
+                $scope.mame = person.name;
+                $scope.lastname = person.lastname;
+                $scope.age = person.age;
+                $scope.email = person.email;
+            };
+
+            $scope.showDetail($scope.persons[0]);
+
+            $scope.reversed = true;
+        });
+</script>
+</body>
+</html>
+
