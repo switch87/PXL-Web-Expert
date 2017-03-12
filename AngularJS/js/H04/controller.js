@@ -4,7 +4,6 @@
 
 (function (app) {
     app.controller('myController', myControllerFn)
-        .controller('homeController', homeControllerFn)
         .controller('aboutController', aboutControllerFn)
         .controller('contactController', contactControllerFn)
     ;
@@ -27,10 +26,6 @@
         vm.showDetail(vm.persons[0]);
 
         vm.reversed = true;
-    }
-
-    function homeControllerFn() {
-        this.msg = 'Hello vanuit de homeController';
     }
 
     function aboutControllerFn() {
